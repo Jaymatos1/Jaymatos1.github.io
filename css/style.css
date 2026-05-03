@@ -102,7 +102,7 @@ body {
 
 /* Reduced Icon Size */
 .hero-icon {
-    width: 64px; /* Shrunk from 120px */
+    width: 100px; /* Shrunk from 120px */
     height: auto;
     margin-bottom: 1rem;
     filter: drop-shadow(0 4px 10px rgba(27, 217, 106, 0.3));
