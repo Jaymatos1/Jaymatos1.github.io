@@ -1,31 +1,37 @@
+/* 
+   One Minute Minecraft - script.js
+   Handles smooth reveal animations and interaction
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Auto World Backup Website loaded successfully!");
+    
+    // 1. Scroll Reveal Animation
+    // This looks for elements as you scroll and fades them in smoothly.
+    const observerOptions = {
+        threshold: 0.1 // Triggers when 10% of the element is visible
+    };
 
-    // 1. Donation Button Listener
-    const donateButtons = document.querySelectorAll('.donate-btn');
-    donateButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const coin = this.getAttribute('data-coin');
-            alert(`You selected ${coin}. Please ensure your payment method is ready to copy the address and complete your donation using NOWPayments.`);
-
-            // Scroll smoothly down to the form area for action
-            document.getElementById('nowpayments-form-area').scrollIntoView({ behavior: 'smooth' });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+            }
         });
+    }, observerOptions);
+
+    // Apply the reveal effect to feature cards
+    const cards = document.querySelectorAll('.feature-card');
+    cards.forEach(card => {
+        card.classList.add('reveal-hidden'); // Initial state
+        observer.observe(card);
     });
 
-    // 2. Simple Header Effect (Optional)
-    const header = document.querySelector('.nav-bar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.padding = '15px 0';
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.4)';
-        } else {
-            header.style.padding = '20px 0';
-            header.style.boxShadow = 'none';
-        }
-    });
-
+    // 2. Modrinth Button Interaction
+    // Subtle console log or feedback when clicking the download button
+    const downloadBtn = document.querySelector('.modrinth-btn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+            console.log("Redirecting to Auto World Backup on Modrinth...");
+        });
+    }
 });
-
-// NOTE: In a real deployment, the actual NOWPayments widget script (usually provided by them)
-// would be placed here or within the HTML to make it interactive.
