@@ -1,259 +1,143 @@
-/* ============================================================== */
-/* REVITALIZED GLOBAL STYLESHEET: AUTO WORLD BACKUP V2.0         */
-/* Goal: Modern, professional, high-contrast, and fluid UX experience. */
-/* =============================================================== */
-
-/* -------------------------- 1. COLOR PALETTE & VARIABLES -------------------------- */
-
-/* Defining a sophisticated palette suitable for tech/gaming aesthetics */
-:root {
-    /* Primary Colors (Minecraft/Tech Inspired) */
-    --color-primary: #007bff;       /* Vibrant Blue - Reliability, Technology */
-    --color-secondary: #ffc107;     /* Amber Yellow - Accent, Warning, Highlight */
-    --color-success: #28a745;      /* Green - Success, Action (e.g., Backup Complete) */
-
-    /* Neutral & Background Colors */
-    --color-dark-navy: #1c2634;    /* Deep Charcoal/Navy - Main background color */
-    --color-card-bg: #273548;      /* Slightly lighter dark for cards/sections */
-    --color-text-light: #e9ecef;   /* Off-white text (better contrast than pure white) */
-    --color-text-muted: #adb5bd;   /* Gray for secondary info, subtitles */
-
-    /* Transitions & Easing */
-    --transition-duration: 0.3s;
-    --transition-timing: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth ease-in-out curve */
+/* Enables smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
 }
 
-/* -------------------------- 2. BASE & RESET STYLES -------------------------- */
-
-* {
-    box-sizing: border-box;
+:root {
+    /* Sleek Dark Mode & Modrinth Green */
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --text-main: #f5f5f5;
+    --text-muted: #a0a0a0;
+    --modrinth-green: #1bd96a;
+    --modrinth-green-hover: #16b859;
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Highly readable, modern standard font */
-    line-height: 1.65;
-    color: var(--color-text-light);
-    background-color: var(--color-dark-navy);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
     margin: 0;
-    padding-top: 60px; /* Space for fixed header */
+    padding: 0;
+    line-height: 1.6;
 }
 
-/* Utility Class for Flexbox Layout */
-.flex {
+.navbar {
+    padding: 1.5rem 2rem;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: var(--text-main);
+}
+
+.hero {
+    min-height: 80vh;
     display: flex;
-    gap: 20px;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    /* Smooth fade-in animation on load */
+    animation: fadeIn 1s ease-out;
 }
 
-/* Container Padding */
-.container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 25px;
-}
-
-
-/* -------------------------- 3. TYPOGRAPHY ENHANCEMENT -------------------------- */
-
-h1, h2, h3 {
-    font-family: 'Press Start 2P', cursive, sans-serif; /* Keep the gaming flair for headings */
-    color: #ffffff;
-    margin-bottom: 0.8rem;
-}
-
-/* Heading Sizes (Responsive Scaling) */
-h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 0.5rem;}
-h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
-h3 { font-size: 1.75rem; color: var(--color-primary); margin-top: 1rem; }
-
-p {
+.hero-content h1 {
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    color: var(--text-main);
 }
 
-/* Subheadings and Lead Paragraphs */
-.lead, .subheading {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    max-width: 800px;
-    margin: 0 auto 30px;
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
 }
 
-/* -------------------------- 4. ANIMATIONS & TRANSITIONS (The "Polish") -------------------------- */
-
-/* General rule for smooth transitions on all interactive elements */
-button, a, .card {
-    transition: transform var(--transition-duration) var(--transition-timing), 
-                box-shadow var(--transition-duration) var(--transition-timing);
-}
-
-/* Subtle lift effect on hover for cards/buttons */
-.hover-lift {
-    transition: all var(--transition-duration) ease-in-out;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Fade-in effect for sections (Can be triggered by JS on scroll) */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in {
-    opacity: 0; /* Initial state for JS to trigger the animation */
-    animation: fadeIn 0.8s ease-out forwards;
-}
-
-/* -------------------------- 5. COMPONENT STYLING -------------------------- */
-
-/* --- Navigation Bar (Header) --- */
-.nav-bar {
-    background-color: var(--color-card-bg);
-    position: fixed; /* Keeps navigation visible while scrolling */
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* --- Buttons & CTAs (Crucial UX Element) --- */
-.cta-button {
-    display: inline-block;
-    padding: 12px 30px;
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
     border-radius: 8px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    /* Base appearance */
-    background-color: var(--color-success); /* Use the primary success color here */
-    color: #fff;
-    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
 }
 
-/* Primary large button style */
-.large {
-    padding: 15px 40px;
-    font-size: 1.2em;
-    margin: 30px auto;
-    display: block; /* Forces it to take up its own line for visual impact */
+.modrinth-btn {
+    background-color: var(--modrinth-green);
+    color: #000;
 }
 
-/* Enhanced Hover Effect */
-.cta-button:hover {
-    background-color: #218838; /* Slightly darker green on hover */
-    transform: translateY(-3px); /* Subtle lift animation */
-    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+.modrinth-btn:hover {
+    background-color: var(--modrinth-green-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(27, 217, 106, 0.2);
 }
 
-/* Secondary buttons (like navigation links) */
-.cta-link {
-    color: var(--color-secondary);
-    border: 1px solid var(--color-secondary);
-    padding: 8px 15px;
-    border-radius: 5px;
-}
-.cta-link:hover {
-    background-color: #ffdd79;
-    color: var(--color-dark-navy);
-    transform: none; /* Override hover lift for the nav */
-    box-shadow: none;
+.btn-icon {
+    height: 24px;
+    width: auto;
 }
 
-/* --- Section Styling --- */
-section {
-    padding: 100px 0;
+.features {
+    padding: 5rem 2rem;
+    background-color: var(--surface-color);
+    text-align: center;
 }
 
-.bg-secondary {
-    background-color: var(--color-card-bg);
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
 }
 
-/* Feature Cards (The most critical component for visual appeal) */
 .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .feature-card {
-    background: var(--color-dark-navy); /* Use the deepest color for contrast */
-    padding: 35px;
+    background-color: var(--bg-color);
+    padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease;
 }
 
-/* Hover Effect Enhancement */
 .feature-card:hover {
-    transform: translateY(-8px); /* More noticeable lift */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), var(--color-primary) 0 0 1px;
+    transform: translateY(-5px);
 }
 
-/* --- Donation Section Styling (Crypto & Buttons) --- */
-#donation {
-    background-color: #1d273a; /* Slightly distinct background for the support section */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--bg-color);
+    color: var(--text-muted);
+    border-top: 1px solid #333;
 }
 
-.donation-box h3 {
-    margin-bottom: 20px;
-}
-
-/* Button Groups for Crypto selection */
-.crypto-button-group {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-.donate-btn {
-    padding: 10px 25px;
-    background-color: var(--color-primary);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.donate-btn:hover {
-    background-color: var(--color-success);
-    transform: translateY(-2px);
-}
-
-
-/* -------------------------- 6. RESPONSIVENESS (Mobile First) -------------------------- */
-
-@media (max-width: 992px) {
-    h1 { font-size: clamp(2rem, 8vw, 3rem); }
-    h2 { font-size: clamp(1.75rem, 4vw, 2.2rem); }
-
-    /* Adjusting the main layout to stack content on smaller screens */
-    .hero-visuals {
-        flex-direction: column;
-        text-align: center;
+/* Keyframes for smooth animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    .text-content {
-        order: 1; /* Ensure text comes first on mobile view */
-    }
-
-     /* Feature Grid collapses gracefully */
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 576px) {
-    .nav-bar {
-        padding: 10px 25px;
-    }
-    /* Stack navigation items vertically */
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    .cta-link {
-        margin-top: 10px;
-    }
-
-    .container {
-        padding: 0 15px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
