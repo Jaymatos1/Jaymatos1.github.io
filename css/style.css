@@ -2,29 +2,96 @@ html {
     scroll-behavior: smooth;
 }
 
+/* CSS Variables for Dark/Light Mode */
 :root {
-    var(--bg-color): #121212;
+    /* Default Dark Mode */
+    --bg-color: #121212;
     --surface-color: #1e1e1e;
     --text-main: #f5f5f5;
     --text-muted: #a0a0a0;
     --modrinth-green: #1bd96a;
     --modrinth-green-hover: #16b859;
-    /* Added a subtle green tint for the background areas you wanted less bland */
-    --surface-tint: linear-gradient(180deg, #121212 0%, #152018 100%); 
+    --surface-tint: linear-gradient(180deg, #121212 0%, #17241a 100%);
+    --nav-bg: rgba(18, 18, 18, 0.95);
+    --card-border: #333;
+}
+
+/* Light Mode Overrides */
+.light-mode {
+    --bg-color: #f9fafb;
+    --surface-color: #ffffff;
+    --text-main: #111827;
+    --text-muted: #4b5563;
+    --surface-tint: linear-gradient(180deg, #f9fafb 0%, #e8f5e9 100%);
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --card-border: #e5e7eb;
 }
 
 body {
-    background-color: #121212;
+    background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--modrinth-green);
+}
+
+.theme-btn {
+    background: none;
+    border: 1px solid var(--card-border);
+    color: var(--text-main);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.theme-btn:hover {
+    background-color: var(--surface-color);
 }
 
 /* Hero Section */
 .hero {
-    min-height: 80vh;
+    min-height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,18 +100,22 @@ body {
     animation: fadeIn 1s ease-out;
 }
 
-/* The Big New Icon */
+/* Reduced Icon Size */
 .hero-icon {
-    width: 120px;
+    width: 64px; /* Shrunk from 120px */
     height: auto;
-    margin-bottom: 1.5rem;
-    filter: drop-shadow(0 4px 10px rgba(27, 217, 106, 0.2));
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 10px rgba(27, 217, 106, 0.3));
 }
 
-.hero-content h1 {
+/* More Colors: Gradient Text Effect */
+.gradient-text {
     font-size: 3.5rem;
     margin-top: 0;
     margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--modrinth-green), #00d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {
@@ -54,7 +125,6 @@ body {
     margin: 0 auto 2rem auto;
 }
 
-/* Modrinth Button */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -83,18 +153,23 @@ body {
     width: auto;
 }
 
-/* New Video Showcase Section */
+/* Video Showcase - Fixed Centering */
 .video-showcase {
     padding: 4rem 2rem;
-    background: var(--surface-tint); /* Adds the subtle color */
-    text-align: center;
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
+    background: var(--surface-tint);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    display: flex; /* Added flex to strictly center */
+    justify-content: center;
 }
 
 .showcase-content {
+    width: 100%;
     max-width: 800px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers children */
+    text-align: center;
 }
 
 .showcase-content h2 {
@@ -107,14 +182,22 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Makes the YouTube video responsive */
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    width: 100%;
+    max-width: 700px; /* Limits max width to look better on desktop */
+    padding-bottom: 39.375%; /* Maintains 16:9 aspect ratio based on max-width */
     height: 0;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Fix aspect ratio padding for mobile */
+@media (max-width: 768px) {
+    .video-wrapper {
+        padding-bottom: 56.25%;
+    }
 }
 
 .video-wrapper iframe {
@@ -147,28 +230,32 @@ body {
 }
 
 .feature-card {
-    background-color: #121212;
+    background-color: var(--bg-color);
     padding: 2rem;
     border-radius: 12px;
     flex: 1;
     min-width: 250px;
-    border: 1px solid #333;
-    transition: transform 0.3s ease;
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.feature-card:hover {
+/* More Colors: Subtle hover effects on cards */
+.color-card-1:hover {
     transform: translateY(-5px);
-    border-color: rgba(27, 217, 106, 0.4);
+    border-color: #00d2ff;
+}
+.color-card-2:hover {
+    transform: translateY(-5px);
+    border-color: var(--modrinth-green);
 }
 
-/* NOWpayments Donation Section */
 .donation-section {
     max-width: 600px;
     margin: 5rem auto 0 auto;
     padding: 2rem;
-    background: var(--surface-tint); /* Adds subtle color here too */
+    background: var(--surface-tint);
     border-radius: 12px;
-    border: 1px solid #2a3a2e;
+    border: 1px solid var(--modrinth-green); /* Made donation box pop out more */
 }
 
 .donation-section h3 {
@@ -183,13 +270,12 @@ body {
     overflow: hidden;
 }
 
-/* Footer Section */
 footer {
     text-align: center;
     padding: 3rem 2rem;
-    background-color: #121212;
+    background-color: var(--bg-color);
     color: var(--text-muted);
-    border-top: 1px solid #222;
+    border-top: 1px solid var(--card-border);
 }
 
 .footer-links {
@@ -212,7 +298,6 @@ footer {
     color: #444;
 }
 
-/* Scroll Reveal Styles for JS */
 .reveal-hidden {
     opacity: 0;
     transform: translateY(30px);
@@ -225,12 +310,6 @@ footer {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
