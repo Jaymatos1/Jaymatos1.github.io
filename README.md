@@ -1,7 +1,7 @@
 # 💾 Auto World Backup Mod Website & Project
 
 [![GitHub license](https://img.shields.io/github/license/YOUR-GITHUB-USERNAME/auto-world-backup?style=for-the-badge)](LICENSE)
-[![Minecraft Modrinth Link](https://img.shields.io/badge/Modrinth-Download%20Link-4CAF50?style=for-the-badge&logo=minecraft)](https://modrinth.com/mod/auto-backup-world)
+[![Minecraft Modrinth Link](https://img.shields.io/badge/Modrinth-Download%20Link-4CAF50?style=for-the-badge&logo=minecraft)](https://modrinth.com/mod/auto-world-backup)
 [![Status Badge](https://img.shields.io/badge/Status-Live-brightgreen?style=for-the-badge)]
 
 Auto World Backup is the official promotional website and hub for our revolutionary Minecraft mod designed to provide foolproof, automated world backups. Say goodbye to manual backup routines and data loss anxiety!
