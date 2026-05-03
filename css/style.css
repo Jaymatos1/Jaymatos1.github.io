@@ -1,306 +1,259 @@
-/* --- Global Reset & Variables --- */
+/* ============================================================== */
+/* REVITALIZED GLOBAL STYLESHEET: AUTO WORLD BACKUP V2.0         */
+/* Goal: Modern, professional, high-contrast, and fluid UX experience. */
+/* =============================================================== */
+
+/* -------------------------- 1. COLOR PALETTE & VARIABLES -------------------------- */
+
+/* Defining a sophisticated palette suitable for tech/gaming aesthetics */
 :root {
-    --color-primary: #4CAF50; /* Minecraft Green / Action Color */
-    --color-secondary: #1e2a38; /* Darker background (like obsidian/deep jungle) */
-    --color-text: #e6e6e6; /* Light text color */
-    --color-dark: #0f172a;  /* Deepest black/blue for section backgrounds */
-    --color-accent: #ffc300; /* Gold/Yellow accent for buttons */
-    --font-main: 'Roboto', sans-serif;
-    --font-heading: 'Press Start 2P', cursive;
+    /* Primary Colors (Minecraft/Tech Inspired) */
+    --color-primary: #007bff;       /* Vibrant Blue - Reliability, Technology */
+    --color-secondary: #ffc107;     /* Amber Yellow - Accent, Warning, Highlight */
+    --color-success: #28a745;      /* Green - Success, Action (e.g., Backup Complete) */
+
+    /* Neutral & Background Colors */
+    --color-dark-navy: #1c2634;    /* Deep Charcoal/Navy - Main background color */
+    --color-card-bg: #273548;      /* Slightly lighter dark for cards/sections */
+    --color-text-light: #e9ecef;   /* Off-white text (better contrast than pure white) */
+    --color-text-muted: #adb5bd;   /* Gray for secondary info, subtitles */
+
+    /* Transitions & Easing */
+    --transition-duration: 0.3s;
+    --transition-timing: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth ease-in-out curve */
 }
+
+/* -------------------------- 2. BASE & RESET STYLES -------------------------- */
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
-    font-family: var(--font-main);
-    line-height: 1.6;
-    color: var(--color-text);
-    background-color: #151c28; /* Slightly lighter than deep dark */
+    font-family: 'Roboto', sans-serif; /* Highly readable, modern standard font */
+    line-height: 1.65;
+    color: var(--color-text-light);
+    background-color: var(--color-dark-navy);
+    margin: 0;
+    padding-top: 60px; /* Space for fixed header */
 }
 
-a {
-    text-decoration: none;
-    color: var(--color-primary);
-    transition: color 0.3s ease;
+/* Utility Class for Flexbox Layout */
+.flex {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
-a:hover {
-    color: var(--color-accent);
-}
-
+/* Container Padding */
 .container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 20px;
-    /* Padding bottom is applied selectively by sections */
+    padding: 0 25px;
 }
 
-/* --- Typography & Headings --- */
-h1, h2 {
-    font-family: var(--font-heading);
-    color: #fff;
-    margin-bottom: 15px;
+
+/* -------------------------- 3. TYPOGRAPHY ENHANCEMENT -------------------------- */
+
+h1, h2, h3 {
+    font-family: 'Press Start 2P', cursive, sans-serif; /* Keep the gaming flair for headings */
+    color: #ffffff;
+    margin-bottom: 0.8rem;
 }
 
-h1 { font-size: 3em; }
-h2.section-title { font-size: 2.5em; text-align: center; margin-bottom: 10px;}
-p.subheading, .section-subtitle {
-    text-align: center;
-    font-size: 1.2em;
-    margin-bottom: 40px;
-    color: #aaa;
+/* Heading Sizes (Responsive Scaling) */
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 0.5rem;}
+h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
+h3 { font-size: 1.75rem; color: var(--color-primary); margin-top: 1rem; }
+
+p {
+    margin-bottom: 1rem;
 }
 
-/* --- Buttons & CTAs --- */
+/* Subheadings and Lead Paragraphs */
+.lead, .subheading {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+/* -------------------------- 4. ANIMATIONS & TRANSITIONS (The "Polish") -------------------------- */
+
+/* General rule for smooth transitions on all interactive elements */
+button, a, .card {
+    transition: transform var(--transition-duration) var(--transition-timing), 
+                box-shadow var(--transition-duration) var(--transition-timing);
+}
+
+/* Subtle lift effect on hover for cards/buttons */
+.hover-lift {
+    transition: all var(--transition-duration) ease-in-out;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Fade-in effect for sections (Can be triggered by JS on scroll) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+    opacity: 0; /* Initial state for JS to trigger the animation */
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* -------------------------- 5. COMPONENT STYLING -------------------------- */
+
+/* --- Navigation Bar (Header) --- */
+.nav-bar {
+    background-color: var(--color-card-bg);
+    position: fixed; /* Keeps navigation visible while scrolling */
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Buttons & CTAs (Crucial UX Element) --- */
 .cta-button {
     display: inline-block;
     padding: 12px 30px;
     border-radius: 8px;
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.2s;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    border: none; /* Important for button styling */
-}
-
-/* Main Primary CTA (Download) */
-.large-cta {
-    background-color: var(--color-primary);
+    /* Base appearance */
+    background-color: var(--color-success); /* Use the primary success color here */
     color: #fff;
-    font-size: 1.2em;
+    border: none;
+}
+
+/* Primary large button style */
+.large {
     padding: 15px 40px;
+    font-size: 1.2em;
     margin: 30px auto;
-    display: block; /* Make it full width for impact */
-    max-width: 400px;
+    display: block; /* Forces it to take up its own line for visual impact */
 }
 
-.large-cta:hover {
-    background-color: #3d8b42;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+/* Enhanced Hover Effect */
+.cta-button:hover {
+    background-color: #218838; /* Slightly darker green on hover */
+    transform: translateY(-3px); /* Subtle lift animation */
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
 }
 
-/* Navigation CTA button */
-.nav-btn-cta {
-    background-color: var(--color-accent);
-    color: var(--color-dark);
+/* Secondary buttons (like navigation links) */
+.cta-link {
+    color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
     padding: 8px 15px;
     border-radius: 5px;
-    font-weight: bold;
+}
+.cta-link:hover {
+    background-color: #ffdd79;
+    color: var(--color-dark-navy);
+    transform: none; /* Override hover lift for the nav */
+    box-shadow: none;
 }
 
-/* --- Header & Navigation --- */
-.nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(76, 175, 80, 0.3);
-}
-
-.logo {
-    font-family: var(--font-heading);
-    color: var(--color-primary);
-    font-size: 1.5em;
-    letter-spacing: -1px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-/* --- Sections Styling --- */
+/* --- Section Styling --- */
 section {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
-.bg-darker {
-    background-color: var(--color-secondary);
-}
 .bg-secondary {
-    background-color: #1e2a38;
+    background-color: var(--color-card-bg);
 }
 
-/* Hero Section */
-#hero {
-    text-align: center;
-    padding: 100px 0 60px;
-}
-
-.hero-content h1 { margin-bottom: 5px;}
-
-.subheading {
-    font-size: 1.5em;
-    margin-top: 20px;
-    color: #ccc;
-}
-
-.hero-visuals {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    max-width: 900px;
-    margin: 40px auto;
-}
-
-.responsive-image {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Features Grid */
-#features {
-    background-color: var(--color-dark);
-}
-
+/* Feature Cards (The most critical component for visual appeal) */
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-    text-align: center;
 }
 
 .feature-card {
-    background: #1f2c3d;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    background: var(--color-dark-navy); /* Use the deepest color for contrast */
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Hover Effect Enhancement */
 .feature-card:hover {
-    transform: translateY(-5px);
-    background: #2a3d4e;
-    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
+    transform: translateY(-8px); /* More noticeable lift */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), var(--color-primary) 0 0 1px;
 }
 
-.feature-card h3 {
-    color: var(--color-accent);
-    margin-bottom: 10px;
+/* --- Donation Section Styling (Crypto & Buttons) --- */
+#donation {
+    background-color: #1d273a; /* Slightly distinct background for the support section */
 }
 
-/* Donation Section */
-#donate {
-    text-align: center;
-}
-.donation-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 15px;
-    background: #1f2c3d;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+.donation-box h3 {
+    margin-bottom: 20px;
 }
 
-/* Coin Buttons */
-.coin-selector {
+/* Button Groups for Crypto selection */
+.crypto-button-group {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 25px;
     flex-wrap: wrap;
 }
-
 .donate-btn {
+    padding: 10px 25px;
     background-color: var(--color-primary);
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
 .donate-btn:hover {
-    background-color: #3d8b42;
+    background-color: var(--color-success);
     transform: translateY(-2px);
 }
 
-/* NOWPayments Area Styling */
-#nowpayments-form-area p {
-    margin-top: 20px;
-    font-size: 1em;
-    line-height: 1.5;
-}
 
-/* --- Footer --- */
-footer {
-    background-color: var(--color-dark);
-    padding: 40px 0;
-    text-align: center;
-    border-top: 3px solid var(--color-primary);
-}
+/* -------------------------- 6. RESPONSIVENESS (Mobile First) -------------------------- */
 
-footer p {
-    margin-bottom: 15px;
-    font-size: 0.9em;
-}
+@media (max-width: 992px) {
+    h1 { font-size: clamp(2rem, 8vw, 3rem); }
+    h2 { font-size: clamp(1.75rem, 4vw, 2.2rem); }
 
-.social-links a {
-    color: #aaa;
-    margin: 0 10px;
-    font-weight: bold;
-}
-.social-links a:hover {
-     color: var(--color-accent);
-}
-
-
-/* --- Responsiveness (Mobile adjustments) --- */
-@media (max-width: 768px) {
-    h1 { font-size: 2em; }
-    h2.section-title { font-size: 2em; }
-
-    /* Navigation */
-    nav ul {
-        gap: 15px;
-        font-size: 0.9em;
-    }
-
-    /* Hero Visuals (Stacking) */
+    /* Adjusting the main layout to stack content on smaller screens */
     .hero-visuals {
         flex-direction: column;
-        align-items: center;
-        gap: 40px;
+        text-align: center;
     }
-    
-    /* Feature Grid (Single Column on small screens) */
-     .feature-grid {
+    .text-content {
+        order: 1; /* Ensure text comes first on mobile view */
+    }
+
+     /* Feature Grid collapses gracefully */
+    .feature-grid {
         grid-template-columns: 1fr;
-        padding: 0 20px;
     }
+}
 
-    /* Donation Section adjustments */
-    .coin-selector {
-        justify-content: space-around;
+@media (max-width: 576px) {
+    .nav-bar {
+        padding: 10px 25px;
+    }
+    /* Stack navigation items vertically */
+    nav ul {
+        flex-direction: column;
         gap: 10px;
+        text-align: center;
     }
-    .donate-btn {
-        flex: 1 1 auto; /* Allows buttons to grow and fit */
-        min-width: 120px;
+    .cta-link {
+        margin-top: 10px;
+    }
+
+    .container {
+        padding: 0 15px;
     }
 }
-
-@media (max-width: 480px) {
-    /* Padding reduction for mobile usability */
-    section {
-        padding: 50px 0;
-    }
-     .donate-btn {
-         font-size: 0.9em;
-         padding: 10px 10px;
-     }
-}
-
