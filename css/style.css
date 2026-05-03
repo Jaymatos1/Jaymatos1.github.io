@@ -139,5 +139,17 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+        
+        /* Scroll Reveal Styles - Triggered by JS */
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
     }
 }
