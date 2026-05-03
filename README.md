@@ -29,7 +29,7 @@ This website serves two purposes:
 
 Ready to secure your world? Download the stable version directly from our official hub!
 
-➡️ [**Download Auto World Backup on Modrinth!**](https://modrinth.com/mod/auto-backup-world) 
+➡️ [**Download Auto World Backup on Modrinth!**](https://modrinth.com/mod/auto-world-backup) 
 *(Link opens in a new tab)*
 
 ---
