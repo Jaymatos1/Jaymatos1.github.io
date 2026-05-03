@@ -1,20 +1,20 @@
-/* Enables smooth scrolling for the entire page */
 html {
     scroll-behavior: smooth;
 }
 
 :root {
-    /* Sleek Dark Mode & Modrinth Green */
-    --bg-color: #121212;
+    var(--bg-color): #121212;
     --surface-color: #1e1e1e;
     --text-main: #f5f5f5;
     --text-muted: #a0a0a0;
     --modrinth-green: #1bd96a;
     --modrinth-green-hover: #16b859;
+    /* Added a subtle green tint for the background areas you wanted less bland */
+    --surface-tint: linear-gradient(180deg, #121212 0%, #152018 100%); 
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: #121212;
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -22,20 +22,7 @@ body {
     line-height: 1.6;
 }
 
-.navbar {
-    padding: 1.5rem 2rem;
-    background-color: var(--bg-color);
-    border-bottom: 1px solid #333;
-    text-align: center;
-}
-
-.logo {
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    color: var(--text-main);
-}
-
+/* Hero Section */
 .hero {
     min-height: 80vh;
     display: flex;
@@ -43,14 +30,21 @@ body {
     justify-content: center;
     text-align: center;
     padding: 2rem;
-    /* Smooth fade-in animation on load */
     animation: fadeIn 1s ease-out;
+}
+
+/* The Big New Icon */
+.hero-icon {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 10px rgba(27, 217, 106, 0.2));
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
+    margin-top: 0;
     margin-bottom: 1rem;
-    color: var(--text-main);
 }
 
 .hero-content p {
@@ -60,6 +54,7 @@ body {
     margin: 0 auto 2rem auto;
 }
 
+/* Modrinth Button */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -88,6 +83,49 @@ body {
     width: auto;
 }
 
+/* New Video Showcase Section */
+.video-showcase {
+    padding: 4rem 2rem;
+    background: var(--surface-tint); /* Adds the subtle color */
+    text-align: center;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.showcase-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.showcase-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.showcase-content p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+/* Makes the YouTube video responsive */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Features Section */
 .features {
     padding: 5rem 2rem;
     background-color: var(--surface-color);
@@ -109,7 +147,7 @@ body {
 }
 
 .feature-card {
-    background-color: var(--bg-color);
+    background-color: #121212;
     padding: 2rem;
     border-radius: 12px;
     flex: 1;
@@ -120,27 +158,61 @@ body {
 
 .feature-card:hover {
     transform: translateY(-5px);
+    border-color: rgba(27, 217, 106, 0.4);
 }
 
+/* NOWpayments Donation Section */
+.donation-section {
+    max-width: 600px;
+    margin: 5rem auto 0 auto;
+    padding: 2rem;
+    background: var(--surface-tint); /* Adds subtle color here too */
+    border-radius: 12px;
+    border: 1px solid #2a3a2e;
+}
+
+.donation-section h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.donation-box {
+    background-color: #0a0a0a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Footer Section */
 footer {
     text-align: center;
     padding: 3rem 2rem;
-    background-color: var(--bg-color);
+    background-color: #121212;
     color: var(--text-muted);
-    border-top: 1px solid #333;
+    border-top: 1px solid #222;
 }
 
-/* Keyframes for smooth animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        
-        /* Scroll Reveal Styles - Triggered by JS */
+.footer-links {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.footer-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--modrinth-green);
+}
+
+.footer-links .divider {
+    margin: 0 15px;
+    color: #444;
+}
+
+/* Scroll Reveal Styles for JS */
 .reveal-hidden {
     opacity: 0;
     transform: translateY(30px);
@@ -151,5 +223,14 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
