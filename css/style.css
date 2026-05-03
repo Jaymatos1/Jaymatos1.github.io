@@ -28,6 +28,10 @@ html {
 }
 
 body {
+    background-image: url('modrinth_logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;  
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
