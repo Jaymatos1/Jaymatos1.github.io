@@ -3,83 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto World Backup Mod | Reliable Minecraft World Saves</title>
-    <meta name="description" content="Download Auto World Backup for Minecraft. A lightweight, reliable mod for automatic server and singleplayer world saves. Never lose your Minecraft world again.">
-    <link rel="icon" type="image/png" href="img/modrinth_logo.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Download Auto World Backup Minecraft Mod - Automatically backs up your Minecraft worlds with configurable intervals. Support the creator via donations.">
+    <meta name="keywords" content="Minecraft, mod, Auto World Backup, world backup, Minecraft mod, modrinth">
+    <title>Auto World Backup - Minecraft Mod</title>
+    <style>
+        /* Minecraft-themed CSS */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 100%);
+            color: #e0e0e0;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 4px solid #4CAF50;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #8BC34A;
+            margin-bottom: 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .modrinth-logo {
+            width: 150px;
+            height: auto;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #4CAF50;
+        }
+        
+        .hero h2 {
+            color: #FFC107;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(30, 40, 50, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #4CAF50;
+            text-align: center;
+        }
+        
+        .feature-card h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .download-section {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #FFC107;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+        }
+        
+        .donation-section {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #FF9800;
+        }
+        
+        .donation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .donation-btn {
+            background: #FF9800;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .donation-btn:hover {
+            background: #e68a00;
+            transform: scale(1.05);
+        }
+        
+        .ads-section {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #2196F3;
+        }
+        
+        .ads-placeholder {
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .screenshot {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #4CAF50;
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            border-top: 2px solid #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .download-btn, .donation-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Restored and Updated Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">OneMinuteMinecraft</div>
-        <div class="nav-links">
-            <a href="#top">World Backup Mod</a>
-            <a href="#donation">Donation</a>
-            <a href="mailto:jakky7012@gmail.com">Email Me</a>
-            <button id="theme-toggle" class="theme-btn">☀️ Light Mode</button>
-        </div>
-    </nav>
-
-    <header class="hero" id="top">
-        <div class="hero-content">
-            <!-- Shrunk the Hero Icon -->
-            <img src="img/modrinth_logo.png" alt="Auto World Backup Icon" class="hero-icon">
-            
-            <h1 class="gradient-text">Auto World Backup</h1>
-            <p>Never lose a Minecraft world again. The most reliable backup mod for your server and singleplayer worlds.</p>
-            <a href="https://modrinth.com/mod/auto-world-backup" class="btn modrinth-btn" target="_blank" rel="noopener noreferrer">
-                <img src="img/modrinth_logo.png" alt="Modrinth Logo" class="btn-icon">
-                Download on Modrinth
-            </a>
-        </div>
-    </header>
-
-    <!-- Centered Video & Description Section -->
-    <section class="video-showcase">
-        <div class="showcase-content reveal-hidden">
-            <h2>How It Works</h2>
-            <p>Auto World Backup runs silently in the background, securing your progress without you ever having to think about it. Watch the quick showcase below to see how to configure your custom backup intervals.</p>
-            
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="container">
+        <header>
+            <h1>AUTO WORLD BACKUP</h1>
+            <p class="subtitle">Minecraft Mod - Never Lose Your Worlds Again!</p>
+            <div class="logo-container">
+                <img src="modrinth_logo.png" alt="Modrinth Logo" class="modrinth-logo">
             </div>
-        </div>
-    </section>
-
-    <section class="features" id="features">
-        <h2>Why Use Auto World Backup?</h2>
-        <div class="feature-grid">
-            <div class="feature-card reveal-hidden color-card-1">
-                <h3>Automatic Saves</h3>
-                <p>Configure custom intervals so you never have to remember to backup your progress manually.</p>
+        </header>
+        
+        <section class="hero">
+            <h2>Automate Your Minecraft World Backups</h2>
+            <p>Protect your precious builds and adventures with our reliable backup solution. Configure intervals, set retention policies, and never worry about losing your progress again!</p>
+        </section>
+        
+        <section class="features">
+            <div class="feature-card">
+                <h3>✅ Automatic Backups</h3>
+                <p>Set custom intervals for automatic world backups without any manual intervention.</p>
             </div>
-            <div class="feature-card reveal-hidden color-card-2">
-                <h3>Lightweight Performance</h3>
-                <p>Runs quietly in the background without causing lag spikes or interrupting your gameplay.</p>
+            <div class="feature-card">
+                <h3>⚙️ Configurable Settings</h3>
+                <p>Customize backup frequency, storage location, and retention policies to your needs.</p>
             </div>
-        </div>
-
-        <!-- Added id="donation" for the nav link to anchor to -->
-        <div class="donation-section reveal-hidden" id="donation">
-            <h3>Support the Mod</h3>
-            <div class="donation-box">
-                <iframe src="https://nowpayments.io/embeds/donation-widget?api_key=dc5c8475-924c-43e7-af23-efabec7d009a" width="346" height="623" frameborder="0" scrolling="no" style="overflow-y: hidden;">
-    Can't load widget
-</iframe>
+            <div class="feature-card">
+                <h3>🎮 Minecraft Compatible</h3>
+                <p>Works with all Minecraft versions and world types including singleplayer and multiplayer.</p>
             </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <a href="https://www.youtube.com/@JakkyOneMinute" target="_blank" rel="noopener noreferrer">YouTube Channel</a>
-            <span class="divider">•</span>
-            <a href="mailto:jakky7012@gmail.com">jakky7012@gmail.com</a>
-        </div>
-        <p>&copy; 2026 One Minute Minecraft. All rights reserved.</p>
-    </footer>
-
-    <script src="js/script.js"></script>
+        </section>
+        
+        <section class="download-section">
+            <h2>Download Now</h2>
+            <p>Get the latest version of Auto World Backup for your Minecraft experience</p>
+            <a href="#" class="download-btn">Download from Modrinth</a>
+            <a href="#" class="download-btn">Download from GitHub</a>
+        </section>
+        
+        <section class="screenshots">
+            <div class="screenshot">
+                <img src="https://placehold.co/300x200/4CAF50/white?text=Backup+Interface" alt="Backup Interface">
+            </div>
+            <div class="screenshot">
+                <img src="https://placehold.co/300x200/2196F3/white?text=Settings+Panel" alt="Settings Panel">
+            </div>
+            <div class="screenshot">
+                <img src="https://placehold.co/300x200/FFC107/white?text=Backup+History" alt="Backup History">
+            </div>
+        </section>
+        
+        <section class="donation-section">
+            <h2>Support the Creator</h2>
+            <p>If you enjoy this mod, consider supporting my work!</p>
+            <div class="donation-buttons">
+                <a href="#" class="donation-btn">Patreon</a>
+                <a href="#" class="donation-btn">Ko-fi</a>
+                <a href="#" class="donation-btn">Buy Me a Coffee</a>
+                <a href="#" class="donation-btn">PayPal</a>
+            </div>
+        </section>
+        
+        <section class="ads-section">
+            <h2>Advertisement</h2>
+            <div class="ads-placeholder">
+                <p>Your Advertisement Here</p>
+                <p>Get 300x250 Banner Ad Space</p>
+            </div>
+            <p>Ad space available for monetization - contact for rates!</p>
+        </section>
+        
+        <footer>
+            <p>&copy; 2023 Auto World Backup | Minecraft Mod | Made with ❤️</p>
+            <p>This mod is not affiliated with Mojang or Microsoft</p>
+        </footer>
+    </div>
 </body>
 </html>
