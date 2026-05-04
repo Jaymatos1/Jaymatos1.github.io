@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Scroll Reveal Animation
+    // Scroll Reveal Animation
     const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 
-    // 2. Dark/Light Mode Toggle
+    // Dark/Light Mode Toggle
     const themeToggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
     
-    // Check local storage to see if user previously chose light mode
+    // Check local storage for saved theme preference
     if (localStorage.getItem('theme') === 'light') {
         body.classList.add('light-mode');
         themeToggleBtn.textContent = '🌙 Dark Mode';
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Modrinth Button Interaction
+    // Modrinth Button Interaction
     const downloadBtn = document.querySelector('.modrinth-btn');
     if (downloadBtn) {
         downloadBtn.addEventListener('click', () => {
